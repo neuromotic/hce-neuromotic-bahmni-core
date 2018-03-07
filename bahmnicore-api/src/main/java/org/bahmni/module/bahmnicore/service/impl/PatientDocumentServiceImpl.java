@@ -39,6 +39,7 @@ public class PatientDocumentServiceImpl implements PatientDocumentService {
     private final Integer NO_OF_PATIENT_FILE_IN_A_DIRECTORY = 100;
     private final String VIDEO_FILE_TYPE = "video";
     private final String IMAGE_FILE_TYPE = "image";
+    private final String EEG_FILE_TYPE = "eeg";
 
     protected void setThumbnailGenerators(List<ThumbnailGenerator> thumbnailGenerators) {
         this.thumbnailGenerators = thumbnailGenerators;
@@ -130,8 +131,10 @@ public class PatientDocumentServiceImpl implements PatientDocumentService {
             } catch (Exception exception) {
                 throw new FileTypeNotSupportedException(String.format("The image format '%s' is not supported. Supported formats are %s", format, Arrays.toString(new String[]{"png", "jpeg", "gif"})));
             }
+        } else if (EEG_FILE_TYPE.equals(fileType)){
+            FileUtils.writeByteArrayToFile(outputFile, decodedBytes);
         } else {
-            throw new FileTypeNotSupportedException(String.format("The file type is not supported. Supported types are %s/%s/%s", IMAGE_FILE_TYPE, VIDEO_FILE_TYPE, PDF));
+            throw new FileTypeNotSupportedException(String.format("The file type is not supported. Supported types are %s/%s/%s/%s", IMAGE_FILE_TYPE, VIDEO_FILE_TYPE, PDF, EEG_FILE_TYPE));
         }
     }
 

@@ -40,6 +40,10 @@
                     <key><value>ProviderObsHandler</value></key>
                     <bean class="org.bahmni.module.bahmnicore.obs.handler.ProviderObsHandler"/>
                 </entry>
+                <entry>
+                    <key><value>EEGHandler</value></key>
+                    <bean class="org.bahmni.module.bahmnicore.obs.handler.EEGHandler"/>
+                </entry>
             </map>
         </property>
     </bean>

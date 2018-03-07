@@ -150,7 +150,7 @@ public class PatientDocumentServiceImplTest {
         patient.setUuid("patient-uuid");
 
         expectedException.expect(FileTypeNotSupportedException.class);
-        expectedException.expectMessage("The file type is not supported. Supported types are image/video/pdf");
+        expectedException.expectMessage("The file type is not supported. Supported types are image/video/pdf/eeg");
 
         patientDocumentService = new PatientDocumentServiceImpl();
         patientDocumentService.saveDocument(1, "Consultation", "otherfileContent", "xyz", "csv");
